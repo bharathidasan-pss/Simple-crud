@@ -1,6 +1,6 @@
 const express = require('express');
-const db = require('./config/db')
-const upload = require('./config/multer');
+const db = require('./db')
+const upload = require('./multer');
 const app = express();
 
 
@@ -8,14 +8,14 @@ app.get('/', (req, res) => {
     res.send("hi bharathidasan it working time so wakeup")
 });
 
-app.post('/insert',upload.single('images'), (req, res) => {
+app.post('/insert',upload.array('images',1), (req, res) => {
 
 
     const { sno, name, email, password, job } = req.body
 
   //  console.log(sno, name, email, password, job);
 
-    const emp_image = req.file.filename;
+    const emp_image = req.files.filename;
 
     // console.log(emp_image);
     // console.log(req.file);

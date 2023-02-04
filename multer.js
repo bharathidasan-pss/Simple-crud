@@ -5,7 +5,7 @@ const upload=multer(
     {
         storage:multer.diskStorage({
             destination:(req,file,cb)=>{
-                cb(null,"config/image")
+                cb(null,"image")
             },
             filename:(req,file,cb)=>{
                 cb(null,`${Date.now()}-${file.originalname}`)
